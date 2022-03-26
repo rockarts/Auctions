@@ -25,11 +25,13 @@ dependencies:
     path: packages/authentication_repository
   bloc: ^8.0.2
   equatable: ^2.0.3
+  firebase_core: ^1.13.1
   firebase_messaging: ^11.2.11
   flow_builder: ^0.0.4
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  flutter_local_notifications: ^9.4.0
   font_awesome_flutter: ^9.1.0
   form_inputs:
     path: packages/form_inputs
