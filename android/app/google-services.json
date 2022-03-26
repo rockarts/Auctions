@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "895041959025",
+    "firebase_url": "https://auction-bec64-default-rtdb.firebaseio.com",
+    "project_id": "auction-bec64",
+    "storage_bucket": "auction-bec64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895041959025:android:010cdb46c4f1364c7957d0",
+        "android_client_info": {
+          "package_name": "com.example.auction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895041959025-lgkkc8l7bcmcepkaggsqoga09pqgadl9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYqYRKh-hRxIkhfhguHJr3PmPAHXGiSSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895041959025-lgkkc8l7bcmcepkaggsqoga09pqgadl9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "895041959025-6jm06tmuhes9ar70vv4917bk7l45145u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.stevenrockarts.auction"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:895041959025:android:41fc61cb0fa774157957d0",
+        "android_client_info": {
+          "package_name": "com.stevenrockarts.auction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "895041959025-vsqa27r9e4uimhqphk6iik7q5ugaog2v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.stevenrockarts.auction",
+            "certificate_hash": "9832cbe9d08068f857b093d601797063e741ed83"
+          }
+        },
+        {
+          "client_id": "895041959025-lgkkc8l7bcmcepkaggsqoga09pqgadl9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYqYRKh-hRxIkhfhguHJr3PmPAHXGiSSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "895041959025-lgkkc8l7bcmcepkaggsqoga09pqgadl9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "895041959025-6jm06tmuhes9ar70vv4917bk7l45145u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.stevenrockarts.auction"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
