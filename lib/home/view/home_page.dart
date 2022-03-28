@@ -55,11 +55,8 @@ class HomePage extends StatelessWidget {
                         style: Theme.of(context).textTheme.headline6,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(user.name ?? '',
-                          style: Theme.of(context).textTheme.caption),
-                    ),
+                    Text("Start Time: ${homeViewModel.getStartDate()}"),
+                    Text("End Time: ${homeViewModel.getEndDate()}"),
                     homeViewModel.isActive()
                         ? ElevatedButton(
                             onPressed: () =>

@@ -11,10 +11,10 @@ class AuctionRepository {
   void test() {
     DatabaseReference titleRef =
         FirebaseDatabase.instance.ref('posts/ts-functions/title');
-        titleRef.onValue.listen((DatabaseEvent event) {
-          final data = event.snapshot.value;
-          print(data);
-        //updateStarCount(data);
+    titleRef.onValue.listen((DatabaseEvent event) {
+      final data = event.snapshot.value;
+      print(data);
+      //updateStarCount(data);
     });
   }
 }
@@ -24,12 +24,14 @@ class AuctionDao {
       FirebaseDatabase.instance.ref().child('auctions');
 
   void saveAuction(String key, Auction auction) {
-    DatabaseReference _updateRef = FirebaseDatabase.instance.ref('/auctions').child(key);
+    DatabaseReference _updateRef =
+        FirebaseDatabase.instance.ref('/auctions').child(key);
     _updateRef.set(auction.toJson());
   }
 
   void registerForAuction(String key, Auction auction) {
-    DatabaseReference _updateRef = FirebaseDatabase.instance.ref('/auctions').child(key);
+    DatabaseReference _updateRef =
+        FirebaseDatabase.instance.ref('/auctions').child(key);
     _updateRef.set(auction.toJson());
   }
 
@@ -39,39 +41,45 @@ class AuctionDao {
 
   void registerNotification(Auction auction) {
     final manager = LocationManager();
-    manager.registerNotification(auction.title, "The auction is starting soon!");
+    final now = DateTime.now();
+    final reminderTime = auction.start.difference(now);
+    if (reminderTime.inSeconds > 0) {
+      manager.registerNotification(
+          auction.title, "The auction is starting soon!", reminderTime);
+    }
   }
 }
 
 class LocationManager {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
+      FlutterLocalNotificationsPlugin();
 
-  
-  Future<void> registerNotification(String title, String body) async {
+  Future<void> registerNotification(
+      String title, String body, Duration duration) async {
     const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('app_icon');
+        AndroidInitializationSettings('@mipmap/ic_launcher');
 
-  final IOSInitializationSettings initializationSettingsIOS = IOSInitializationSettings();
-      final InitializationSettings initializationSettings = InitializationSettings(
-        android: initializationSettingsAndroid,
-        iOS: initializationSettingsIOS
-      );
+    final IOSInitializationSettings initializationSettingsIOS =
+        IOSInitializationSettings();
+    final InitializationSettings initializationSettings =
+        InitializationSettings(
+            android: initializationSettingsAndroid,
+            iOS: initializationSettingsIOS);
 
-      await flutterLocalNotificationsPlugin.initialize(initializationSettings);
-       tz.initializeTimeZones();
-      await flutterLocalNotificationsPlugin.zonedSchedule(
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    tz.initializeTimeZones();
+    await flutterLocalNotificationsPlugin.zonedSchedule(
         0,
         title,
         body,
-        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
+        tz.TZDateTime.now(tz.local).add(duration),
         const NotificationDetails(
             android: AndroidNotificationDetails(
-                'your channel id', 'your channel name',
-                channelDescription: 'your channel description')),
+                'auctionstartid', 'Auction Notifications',
+                channelDescription:
+                    'Notifications about auctions starting soon.')),
         androidAllowWhileIdle: true,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime);
   }
-
 }

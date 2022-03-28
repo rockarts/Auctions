@@ -1,4 +1,3 @@
-
 import 'package:auction/home/view/home_view_model.dart';
 import 'package:auction_repository/auction_repository.dart';
 
@@ -12,10 +11,8 @@ import 'home_view_model_test.mocks.dart';
 @GenerateMocks([Auction, AuctionDao])
 void main() {
   group('HomeViewModel', () {
-
     late Auction auction;
     late AuctionDao auctionDao;
-
     late HomeViewModel viewModel;
 
     setUp(() {
@@ -24,11 +21,14 @@ void main() {
       viewModel = HomeViewModel(auctionDao: auctionDao);
       viewModel.auction = auction;
     });
-    
+
     test('Should return default image when auction is not yet active', () {
       when(auction.isActive()).thenReturn(false);
       String image = viewModel.getImage();
-      expect(image, equals("https://firebasestorage.googleapis.com/v0/b/auction-bec64.appspot.com/o/blurred_car.jpg?alt=media&token=92c9b9da-1e23-48b5-8e32-336c63a816e7"));
+      expect(
+          image,
+          equals(
+              "https://firebasestorage.googleapis.com/v0/b/auction-bec64.appspot.com/o/blurred_car.jpg?alt=media&token=92c9b9da-1e23-48b5-8e32-336c63a816e7"));
     });
 
     test('Should return auction image when auction is active', () {
@@ -38,6 +38,11 @@ void main() {
       expect(image, equals("test"));
     });
 
-
+    test('Should start format date', () {
+      final date = DateTime(2022, 3, 27, 11, 12);
+      when(auction.start).thenReturn(date);
+      String formatted = viewModel.getStartDate();
+      expect(formatted, equals("3/27/2022 11:12 AM"));
+    });
   });
 }
