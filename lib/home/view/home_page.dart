@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
 
   static Page page() => MaterialPage<void>(child: HomePage());
   final ScrollController _scrollController = ScrollController();
-  final homeViewModel = HomeViewModel();
+  final auctionDao = AuctionDao();
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +32,10 @@ class HomePage extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           child: FirebaseAnimatedList(
             controller: _scrollController,
-            query: homeViewModel.getAuctionsQuery(),
+            query: auctionDao.getAuctionsQuery(),
             itemBuilder: (context, snapshot, animation, index) {
               final json = snapshot.value as Map<dynamic, dynamic>;
+              final homeViewModel = HomeViewModel();
               homeViewModel.auction = Auction.fromJson(json);
               return Card(
                 elevation: 5,
@@ -55,12 +56,13 @@ class HomePage extends StatelessWidget {
                         style: Theme.of(context).textTheme.headline6,
                       ),
                     ),
+                    Text("Top Bidder: ${homeViewModel.topBidder}"),
                     Text("Start Time: ${homeViewModel.getStartDate()}"),
                     Text("End Time: ${homeViewModel.getEndDate()}"),
                     homeViewModel.isActive()
                         ? ElevatedButton(
                             onPressed: () =>
-                                {homeViewModel.placeBid(snapshot.key)},
+                                {homeViewModel.placeBid(snapshot.key, user)},
                             child: const Text("Bid"))
                         : ElevatedButton(
                             onPressed: () =>

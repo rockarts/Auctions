@@ -8,6 +8,7 @@ class Auction {
   DateTime start;
   String title;
   String vendor;
+  String topBidder;
   List<String>? registeredUsers;
 
   Auction(
@@ -17,12 +18,9 @@ class Auction {
     this.start,
     this.title,
     this.vendor,
+    this.topBidder,
     this.registeredUsers,
   );
-
-  void updatePrice(double newPrice) {
-    price += newPrice;
-  }
 
   bool isActive() {
     final now = DateTime.now();
@@ -65,6 +63,7 @@ class Auction {
         start = DateTime.parse(json["start"]),
         title = json["title"],
         vendor = json["vendor"],
+        topBidder = json["top_bidder"],
         registeredUsers = json["registeredUsers"] == null
             ? null
             : List<String>.from(json["registeredUsers"].map((x) => x));
@@ -76,6 +75,7 @@ class Auction {
         "start": start.toIso8601String(),
         "title": title,
         "vendor": vendor,
+        "top_bidder": topBidder,
         "registeredUsers": registeredUsers == null
             ? null
             : List<dynamic>.from(registeredUsers!.map((x) => x)),

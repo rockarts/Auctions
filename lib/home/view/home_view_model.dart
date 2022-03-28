@@ -2,7 +2,6 @@ import 'package:auction_repository/auction_repository.dart';
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
 class HomeViewModel with ChangeNotifier {
@@ -15,6 +14,7 @@ class HomeViewModel with ChangeNotifier {
   }
 
   String get title => auction.title;
+  String get topBidder => auction.topBidder;
 
   String getImage() {
     if (auction.isActive()) {
@@ -40,9 +40,8 @@ class HomeViewModel with ChangeNotifier {
     return auction.isRegistered(user) ? "Register" : "Registered";
   }
 
-  void placeBid(String? key) {
-    auction.updatePrice(500);
-    saveAuction(key!, auction);
+  void placeBid(String? key, User user) {
+    auctionDao.placeBid(key!, auction.price + 500, user.name ?? user.id);
   }
 
   void register(String? key, User user) {
