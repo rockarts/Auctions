@@ -1,0 +1,47 @@
+{"auctions": {
+    "1": {
+      "price" : 79995.00,
+      "start" : "2022-03-01T00:00:00Z",
+      "end" : "2022-12-01T00:00:00Z",
+      "title" : "1936 LaSalle Convertible Coupe",
+      "vendor": "Steve's Classics",
+      "image" : "https://i.ebayimg.com/thumbs/images/g/GDMAAOSwxFxiP0or/s-l300.webp",
+      "isActive" : false,
+      "top_bidder": "--",
+      "registeredUsers" : []
+    },
+    "2": {
+      "price" : 1000.00,
+      "start" : "2022-04-01T00:00:00Z",
+      "end" : "2022-05-01T00:00:00Z",
+      "title" : "1932 Ford Model T",
+      "vendor": "Steve's Classics",
+      "image": "https://i.ebayimg.com/thumbs/images/g/wZ8AAOSwHm9iNfbu/s-l300.webp",
+      "isActive" : false,
+      "top_bidder": "--",
+      "registeredUsers" : []
+    },
+    "3": {
+      "price" : 79995.00,
+      "start" : "2022-01-01T00:00:00Z",
+      "end" : "2022-02-01T00:00:00Z",
+      "title" : "1936 Hudson Terraplane Brougham 2 Door Sedan",
+      "vendor": "Joe's Discount Cars",
+      "image": "https://i.ebayimg.com/thumbs/images/g/vLIAAOSwBP1iOzMN/s-l300.webp",
+      "isActive" : false,
+      "top_bidder": "--",
+      "registeredUsers" : []
+    },
+    "4": {
+      "price" : 10.00,
+      "start" : "2024-01-01T00:00:00Z",
+      "end" : "2025-01-01T00:00:00Z",
+      "title" : "Trabant 601 Universal",
+      "vendor": "Crazy Vaclav's. Put it in H!",
+      "image": "https://i.ebayimg.com/thumbs/images/g/xrUAAOSwA8pgCUYj/s-l225.webp",
+      "isActive" : false,
+      "top_bidder": "--",
+      "registeredUsers" : []
+    }
+  }
+}
