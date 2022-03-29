@@ -64,10 +64,15 @@ class HomePage extends StatelessWidget {
                             onPressed: () =>
                                 {homeViewModel.placeBid(snapshot.key, user)},
                             child: const Text("Bid"))
-                        : ElevatedButton(
-                            onPressed: () =>
-                                {homeViewModel.register(snapshot.key, user)},
-                            child: Text(homeViewModel.registerButtonText(user)))
+                        : homeViewModel.auctionEnded()
+                            ? ElevatedButton(
+                                onPressed: () => {}, child: const Text("Ended"))
+                            : ElevatedButton(
+                                onPressed: () => {
+                                      homeViewModel.register(snapshot.key, user)
+                                    },
+                                child: Text(
+                                    homeViewModel.registerButtonText(user)))
                   ],
                 ),
               );

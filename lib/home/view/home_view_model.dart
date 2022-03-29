@@ -59,6 +59,10 @@ class HomeViewModel with ChangeNotifier {
     return auction.isActive;
   }
 
+  bool auctionEnded() {
+    return auction.isEnded();
+  }
+
   String getStartDate() {
     return formatDate(auction.start);
   }

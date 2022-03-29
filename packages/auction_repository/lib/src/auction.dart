@@ -23,15 +23,15 @@ class Auction {
     this.registeredUsers,
   );
 
-  // bool isActive() {
-  //   final now = DateTime.now();
+  bool isEnded() {
+    final now = DateTime.now();
 
-  //   if (start.compareTo(now) < 0 && end.compareTo(now) > 0) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
+    if (end.compareTo(now) < 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   void register(User user) {
     if (!isRegistered(user)) {
