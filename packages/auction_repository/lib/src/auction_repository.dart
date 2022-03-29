@@ -35,6 +35,12 @@ class AuctionDao {
     _updateRef.update({"price": bid, "top_bidder": userName});
   }
 
+  void registedUser(String key, List<String>? users) {
+    DatabaseReference _updateRef =
+        FirebaseDatabase.instance.ref('/auctions').child(key);
+    _updateRef.update({"registeredUsers": users});
+  }
+
   void registerForAuction(String key, Auction auction) {
     DatabaseReference _updateRef =
         FirebaseDatabase.instance.ref('/auctions').child(key);

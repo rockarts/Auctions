@@ -77,17 +77,25 @@ class MockAuction extends _i1.Mock implements _i3.Auction {
       super.noSuchMethod(Invocation.setter(#vendor, _vendor),
           returnValueForMissingStub: null);
   @override
+  String get topBidder =>
+      (super.noSuchMethod(Invocation.getter(#topBidder), returnValue: '')
+          as String);
+  @override
+  set topBidder(String? _topBidder) =>
+      super.noSuchMethod(Invocation.setter(#topBidder, _topBidder),
+          returnValueForMissingStub: null);
+  @override
+  bool get isActive =>
+      (super.noSuchMethod(Invocation.getter(#isActive), returnValue: false)
+          as bool);
+  @override
+  set isActive(bool? _isActive) =>
+      super.noSuchMethod(Invocation.setter(#isActive, _isActive),
+          returnValueForMissingStub: null);
+  @override
   set registeredUsers(List<String>? _registeredUsers) =>
       super.noSuchMethod(Invocation.setter(#registeredUsers, _registeredUsers),
           returnValueForMissingStub: null);
-  @override
-  void updatePrice(double? newPrice) =>
-      super.noSuchMethod(Invocation.method(#updatePrice, [newPrice]),
-          returnValueForMissingStub: null);
-  @override
-  bool isActive() =>
-      (super.noSuchMethod(Invocation.method(#isActive, []), returnValue: false)
-          as bool);
   @override
   void register(_i4.User? user) =>
       super.noSuchMethod(Invocation.method(#register, [user]),
@@ -96,10 +104,6 @@ class MockAuction extends _i1.Mock implements _i3.Auction {
   bool isRegistered(_i4.User? user) =>
       (super.noSuchMethod(Invocation.method(#isRegistered, [user]),
           returnValue: false) as bool);
-  @override
-  String showPrice() =>
-      (super.noSuchMethod(Invocation.method(#showPrice, []), returnValue: '')
-          as String);
   @override
   Map<String, dynamic> toJson() =>
       (super.noSuchMethod(Invocation.method(#toJson, []),
@@ -117,6 +121,14 @@ class MockAuctionDao extends _i1.Mock implements _i5.AuctionDao {
   @override
   void saveAuction(String? key, _i3.Auction? auction) =>
       super.noSuchMethod(Invocation.method(#saveAuction, [key, auction]),
+          returnValueForMissingStub: null);
+  @override
+  void placeBid(String? key, double? bid, String? userName) =>
+      super.noSuchMethod(Invocation.method(#placeBid, [key, bid, userName]),
+          returnValueForMissingStub: null);
+  @override
+  void registedUser(String? key, List<String>? users) =>
+      super.noSuchMethod(Invocation.method(#registedUser, [key, users]),
           returnValueForMissingStub: null);
   @override
   void registerForAuction(String? key, _i3.Auction? auction) =>

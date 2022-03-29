@@ -1,5 +1,4 @@
 import 'package:authentication_repository/authentication_repository.dart';
-import 'package:intl/intl.dart';
 
 class Auction {
   DateTime end;
@@ -9,6 +8,7 @@ class Auction {
   String title;
   String vendor;
   String topBidder;
+  bool isActive;
   List<String>? registeredUsers;
 
   Auction(
@@ -19,18 +19,19 @@ class Auction {
     this.title,
     this.vendor,
     this.topBidder,
+    this.isActive,
     this.registeredUsers,
   );
 
-  bool isActive() {
-    final now = DateTime.now();
+  // bool isActive() {
+  //   final now = DateTime.now();
 
-    if (start.compareTo(now) < 0 && end.compareTo(now) > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  //   if (start.compareTo(now) < 0 && end.compareTo(now) > 0) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
   void register(User user) {
     if (!isRegistered(user)) {
@@ -47,15 +48,6 @@ class Auction {
     }
   }
 
-  String showPrice() {
-    final currency = NumberFormat.currency();
-    if (isActive()) {
-      return currency.format(price);
-    }
-
-    return "Price not shown until auction is started";
-  }
-
   Auction.fromJson(Map<dynamic, dynamic> json)
       : end = DateTime.parse(json["end"]),
         image = json["image"],
@@ -64,6 +56,7 @@ class Auction {
         title = json["title"],
         vendor = json["vendor"],
         topBidder = json["top_bidder"],
+        isActive = json["isActive"],
         registeredUsers = json["registeredUsers"] == null
             ? null
             : List<String>.from(json["registeredUsers"].map((x) => x));
@@ -76,6 +69,7 @@ class Auction {
         "title": title,
         "vendor": vendor,
         "top_bidder": topBidder,
+        "isActive": isActive,
         "registeredUsers": registeredUsers == null
             ? null
             : List<dynamic>.from(registeredUsers!.map((x) => x)),

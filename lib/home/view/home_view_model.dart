@@ -17,15 +17,11 @@ class HomeViewModel with ChangeNotifier {
   String get topBidder => auction.topBidder;
 
   String getImage() {
-    if (auction.isActive()) {
+    if (auction.isActive) {
       return auction.image;
     } else {
       return "https://firebasestorage.googleapis.com/v0/b/auction-bec64.appspot.com/o/blurred_car.jpg?alt=media&token=92c9b9da-1e23-48b5-8e32-336c63a816e7";
     }
-  }
-
-  void saveAuction(String key, Auction auction) {
-    auctionDao.saveAuction(key, auction);
   }
 
   registerNotification(Auction auction) {
@@ -37,7 +33,7 @@ class HomeViewModel with ChangeNotifier {
   }
 
   String registerButtonText(User user) {
-    return auction.isRegistered(user) ? "Register" : "Registered";
+    return auction.isRegistered(user) ? "Registered" : "Register";
   }
 
   void placeBid(String? key, User user) {
@@ -47,21 +43,20 @@ class HomeViewModel with ChangeNotifier {
   void register(String? key, User user) {
     auction.register(user);
     registerNotification(auction);
-    saveAuction(key!, auction);
+    auctionDao.registedUser(key!, auction.registeredUsers);
   }
 
   String showPrice() {
-    // final currency =  NumberFormat.currency();
-    // if(isActive()) {
-    //   return currency.format(price);
-    // }
+    final currency = NumberFormat.currency();
+    if (auction.isActive) {
+      return currency.format(auction.price);
+    }
 
-    // return "Price not shown until auction is started";
-    return auction.showPrice();
+    return "Price not shown until auction is started";
   }
 
   bool isActive() {
-    return auction.isActive();
+    return auction.isActive;
   }
 
   String getStartDate() {

@@ -1,5 +1,6 @@
 import 'package:auction/home/view/home_view_model.dart';
 import 'package:auction_repository/auction_repository.dart';
+import 'package:authentication_repository/authentication_repository.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -23,7 +24,7 @@ void main() {
     });
 
     test('Should return default image when auction is not yet active', () {
-      when(auction.isActive()).thenReturn(false);
+      when(auction.isActive).thenReturn(false);
       String image = viewModel.getImage();
       expect(
           image,
@@ -32,7 +33,7 @@ void main() {
     });
 
     test('Should return auction image when auction is active', () {
-      when(auction.isActive()).thenReturn(true);
+      when(auction.isActive).thenReturn(true);
       when(auction.image).thenReturn("test");
       String image = viewModel.getImage();
       expect(image, equals("test"));
@@ -43,6 +44,31 @@ void main() {
       when(auction.start).thenReturn(date);
       String formatted = viewModel.getStartDate();
       expect(formatted, equals("3/27/2022 11:12 AM"));
+    });
+    test('Should show register when user is unregistered', () {
+      const user = User(id: "12345");
+      when(auction.isRegistered(user)).thenReturn(false);
+
+      String text = viewModel.registerButtonText(user);
+      expect(text, equals("Register"));
+    });
+    test('Should show register when user is unregistered', () {
+      const user = User(id: "12345");
+      when(auction.isRegistered(user)).thenReturn(true);
+      String text = viewModel.registerButtonText(user);
+      expect(text, equals("Registered"));
+    });
+    test('Should not show price if auction is not active', () {
+      when(auction.isActive).thenReturn(false);
+      String text = viewModel.showPrice();
+      expect(text, equals("Price not shown until auction is started"));
+    });
+
+    test('Should show price and format if auction is active', () {
+      when(auction.isActive).thenReturn(true);
+      when(auction.price).thenReturn(5.00);
+      String text = viewModel.showPrice();
+      expect(text, equals("USD5.00"));
     });
   });
 }
