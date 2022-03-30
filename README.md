@@ -1,16 +1,30 @@
-# auction
+## Notes
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+### Date
+March 29th, 2022
 
-A few resources to get you started if this is your first Flutter project:
+### Time spent
+How much time did you spend on the assignment? Normally, this is expressed in hours.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Assumptions made
+Use this section to tell us about any assumptions that you made when creating your solution.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Shortcuts/Compromises made
+If applicable. Did you do something that you feel could have been done better in a real-world application?
+Please let us know.
+
+### Stretch goals attempted
+If applicable, use this area to tell us what stretch goals you attempted. What went well? What do you wish
+you could have done better? If you didn&#39;t attempt any of the stretch goals, feel free to let us know why.
+
+### What did you not include in your solution that you want us to know about?
+Were you short on time and not able to include something that you want us to know
+about? Please list it here so that we know that you considered it.
+
+### Other information about your submission that you feel it&#39;s important that we know if
+applicable.
+
+### Your feedback on this technical challenge
+Have feedback for how we could make this assignment better? Please let us know.
